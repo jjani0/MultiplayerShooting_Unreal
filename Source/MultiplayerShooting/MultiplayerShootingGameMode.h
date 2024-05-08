@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -6,12 +6,14 @@
 #include "GameFramework/GameMode.h"
 #include "MultiplayerShootingGameMode.generated.h"
 
-UCLASS(minimalapi)
-class AMultiplayerShootingGameMode : public AGameMode
+UCLASS()
+class MULTIPLAYERSHOOTING_API AMultiplayerShootingGameMode : public AGameMode
 {
 	GENERATED_BODY()
-
+	
 public:
+	virtual void PostLogin(APlayerController* NewPlayer) override;
+	virtual void Logout(AController* Exiting) override;
 	bool HasWinner() const;
 	void OnKill(AController* KillerController, AController* VictimController);
 
@@ -28,6 +30,3 @@ protected:
 
 	void RestartMap();
 };
-
-
-
